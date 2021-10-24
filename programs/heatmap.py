@@ -5,6 +5,7 @@
 
 
 from pydub import AudioSegment
+import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -17,6 +18,7 @@ get_ipython().run_line_magic('matplotlib', 'inline')
 
 
 name ="ウルトラ大掃除.mp3"
+path = os.getcwd()
 
 
 # In[3]:
@@ -100,10 +102,10 @@ l.set_ylabel("freq[Hz]",fontsize = 20)
 l.set_xlabel("time[s]",fontsize = 20)
 
 
-# In[12]:
+# In[14]:
 
 
-a.savefig("C:/Users/1821144/Desktop/大学/4年/セミナー/sample/%s.png"%(name),bbox_inches="tight")
+a.savefig("%s\/%s.png"%(path, name),bbox_inches="tight")
 
 
 # In[ ]:

@@ -1,0 +1,7 @@
+heatmap.py を使用する際にffmpegのインストール
+pip install ffmpeg-python
+
+Categorize.pyを利用する際にlibrosaのインストール
+pip install librosa
+
+

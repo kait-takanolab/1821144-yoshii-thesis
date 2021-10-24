@@ -1,7 +1,3 @@
-heatmap.py を使用する際にffmpegのインストール
-pip install ffmpeg-python
+heatmap.py を使用する際にffmpeg,pydub,pandasのインストールが必要
 
 Categorize.pyを利用する際にlibrosaのインストール
-pip install librosa
-
-

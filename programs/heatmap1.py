@@ -12,14 +12,14 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from IPython import get_ipython
 
-get_ipython().run_line_magic('matplotlib', 'inline')
+#get_ipython().run_line_magic()
 
 
 # In[2]:
 
-
-name ="ウルトラ大掃除.mp3"
 path = os.getcwd()
+name ="ウルトラ大掃除.mp3"
+
 
 
 # In[3]:

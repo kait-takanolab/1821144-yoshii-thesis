@@ -9,7 +9,7 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
+import seaborn as sans
 from IPython import get_ipython
 
 #get_ipython().run_line_magic()

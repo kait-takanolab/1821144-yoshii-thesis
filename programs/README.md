@@ -8,3 +8,6 @@ pip install pandas
 
 Categorize.pyを利用する際にlibrosaのインストール
 pip install librosa
+
+モデル作成のデータセットには下記のfma_smallを使用
+https://github.com/mdeff/fma#data

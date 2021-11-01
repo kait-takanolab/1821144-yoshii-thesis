@@ -11,8 +11,8 @@ import os.path
 import librosa
 import numpy as np
 
-
-os.chdir('C:\\Users\\1821144\\Documents\\GitHub\\1821144-yoshii-thesis\\music')
+path = os.getcwd()
+os.chdir('%s\\music'%path)
 def load(dir_path, label):
     n_mfcc = 20
     genre_x = np.zeros((0,n_mfcc))

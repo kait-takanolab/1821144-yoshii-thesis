@@ -9,7 +9,7 @@ import os
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sans
+import seaborn as sns
 from IPython import get_ipython
 
 #get_ipython().run_line_magic()
@@ -18,7 +18,7 @@ from IPython import get_ipython
 # In[2]:
 
 path = os.getcwd()
-name ="ウルトラ大掃除.mp3"
+name ="ultra.mp3"
 
 
 

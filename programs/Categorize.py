@@ -12,7 +12,7 @@ import librosa
 import numpy as np
 
 path = os.getcwd()
-os.chdir('%s\\music'%path)
+os.chdir('%s/music'%path)
 def load(dir_path, label):
     n_mfcc = 20
     genre_x = np.zeros((0,n_mfcc))
@@ -32,8 +32,8 @@ def load(dir_path, label):
     return genre_x, genre_y
 
 if __name__ == '__main__':
-    folk_x, folk_y = load('Folk\\', 0)
-    electronic_x, electronic_y = load('Electric\\', 1)
+    folk_x, folk_y = load('Folk/', 0)
+    electronic_x, electronic_y = load('Electric/', 1)
     
     X = np.r_[folk_x, electronic_x]
     Y = np.r_[folk_y, electronic_y]

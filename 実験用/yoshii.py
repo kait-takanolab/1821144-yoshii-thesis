@@ -9,6 +9,7 @@ Original file is located at
 from keras.applications.vgg16 import VGG16
 from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input, decode_predictionsimport numpy as np
+
 model = VGG16(weights='imagenet')
 img_path = 'yoshii.jpg'
 img = image.load_img(img_path,target_size=(224,224))

@@ -50,6 +50,7 @@ if __name__ == '__main__':
 import numpy as np
 from keras.models import Sequential
 from keras.layers import Dense, Dropout
+from keras.models import load_model
 from sklearn.model_selection import train_test_split
 
 x = np.load('x.npy')
@@ -74,6 +75,9 @@ model.fit(x_train, y_train, epochs=500, batch_size=128)
 
 score = model.evaluate(x_test, y_test, batch_size=128)
 print(f'loss* {score[0]}, accuracy: {score[1]}')
+model.save("model_categorize.h5")
+model = load_model("model_categorize.h5")
+model.summary()
 
 
 # In[ ]:

@@ -9,3 +9,7 @@
 ### <img src="https://icooon-mono.com/i/icon_12063/icon_120631_64.png" height="30px;" /> プログラム
 
 - https://github.com/kait-takanolab/1821144-yoshii-thesis/tree/main/programs
+
+### <img src="https://icooon-mono.com/i/icon_15815/icon_158151_64.png" height="30px;" /> 卒論
+
+- https://github.com/kait-takanolab/1821144-yoshii-thesis/blob/main/1821144-yoshii_thesis.docx

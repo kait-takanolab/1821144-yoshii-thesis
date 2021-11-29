@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[4]:
 
 
 # feature extractoring and preprocessing data
@@ -25,26 +25,25 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-# In[ ]:
+# In[5]:
 
 
 cmap = plt.get_cmap('inferno')
-dir = os.getcwd()
 
 plt.figure(figsize=(10,10))
 genres = 'Electric Folk HipHop International Latin Metal Noise Pop Rock Punk'.split()
 for g in genres:
-    pathlib.Path(f'img_data/{g}').mkdir(parents=True, exist_ok=True)
-    for filename in os.listdir(f'music/{g}'):
-        songname = f'music/{g}/{filename}'
+    pathlib.Path(f'img_data/{g}').mkdir(parents=True, exist_ok=True)     
+    for filename in os.listdir(f'{g}'):
+        songname = f'{g}/{filename}'
         y, sr = librosa.load(songname, mono=True, duration=5)
         plt.specgram(y, NFFT=2048, Fs=2, Fc=0, noverlap=128, cmap=cmap, sides='default', mode='default', scale='dB');
         plt.axis('off');
-        plt.savefig(dir+f'/img_data/{g}/{filename[:-3].replace(".", "")}.png')
+        plt.savefig(f'img_data/{g}/{filename[:-3].replace(".", "")}.png')
         plt.clf()
 
 
-# In[ ]:
+# In[8]:
 
 
 header = 'filename chroma_stft spectral_centroid spectral_bandwidth rolloff zero_crossing_rate'
@@ -54,7 +53,7 @@ header += ' label'
 header = header.split()
 
 
-# In[ ]:
+# In[9]:
 
 
 file = open('data.csv', 'w', newline='')
@@ -63,8 +62,8 @@ with file:
     writer.writerow(header)
 genres = 'Electric Folk HipHop International Latin Metal Noise Pop Rock Punk'.split()
 for g in genres:
-    for filename in os.listdir(f'music/{g}'):
-        songname = f'music/{g}/{filename}'
+    for filename in os.listdir(f'{g}'):
+        songname = f'{g}/{filename}'
         y, sr = librosa.load(songname, mono=True, duration=30)
         chroma_stft = librosa.feature.chroma_stft(y=y, sr=sr)
         spec_cent = librosa.feature.spectral_centroid(y=y, sr=sr)
@@ -83,26 +82,26 @@ for g in genres:
             
 
 
-# In[ ]:
+# In[10]:
 
 
 data = pd.read_csv('data.csv')
 data.head()
 
 
-# In[ ]:
+# In[11]:
 
 
 data.shape
 
 
-# In[ ]:
+# In[12]:
 
 
 data = data.drop(['filename'],axis=1)
 
 
-# In[ ]:
+# In[13]:
 
 
 genre_list = data.iloc[:, -1]
@@ -110,38 +109,38 @@ encoder = LabelEncoder()
 y = encoder.fit_transform(genre_list)
 
 
-# In[ ]:
+# In[14]:
 
 
 scaler = StandardScaler()
 X = scaler.fit_transform(np.array(data.iloc[:, :-1], dtype = float))
 
 
-# In[ ]:
+# In[15]:
 
 
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
 
-# In[ ]:
+# In[16]:
 
 
 len(y_train)
 
 
-# In[ ]:
+# In[17]:
 
 
 len(y_test)
 
 
-# In[ ]:
+# In[18]:
 
 
 X_train[10]
 
 
-# In[ ]:
+# In[19]:
 
 
 from keras import models
@@ -157,7 +156,7 @@ model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10, activation='softmax'))
 
 
-# In[ ]:
+# In[20]:
 
 
 model.compile(optimizer='adam',
@@ -165,7 +164,7 @@ model.compile(optimizer='adam',
               metrics=['accuracy'])
 
 
-# In[ ]:
+# In[21]:
 
 
 history = model.fit(X_train,
@@ -174,41 +173,41 @@ history = model.fit(X_train,
                     batch_size=128)
 
 
-# In[ ]:
+# In[22]:
 
 
 test_loss, test_acc = model.evaluate(X_test,y_test)
 
 
-# In[ ]:
+# In[23]:
 
 
 print('test_acc: ',test_acc)
 
 
-# In[ ]:
+# In[24]:
 
 
 predictions = model.predict(X_test)
 
 
-# In[ ]:
+# In[25]:
 
 
 predictions[0].shape
 
 
-# In[ ]:
+# In[26]:
 
 
 np.sum(predictions[0])
 
 
-# In[ ]:
+# In[27]:
 
 
-print(np.argmax(predictions[0]))
-
+prediction = np.argmax(predictions[0])
+print(prediction)
 
 # In[ ]:
 

@@ -3,7 +3,7 @@ from keras.preprocessing import image
 from keras.applications.vgg16 import preprocess_input,decode_predictions
 import numpy as np
 model = VGG16(weights='imagenet')
-img_path = 'yoshii.jpg'
+img_path = 'ultra.png'
 img = image.load_img(img_path,target_size=(224,224))
 
 x = image.img_to_array(img)

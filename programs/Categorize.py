@@ -12,7 +12,6 @@ import librosa
 import numpy as np
 
 path = os.getcwd()
-os.chdir('%s/music'%path)
 def load(dir_path, label):
     n_mfcc = 20
     genre_x = np.zeros((0,n_mfcc))
@@ -78,6 +77,12 @@ print(f'loss* {score[0]}, accuracy: {score[1]}')
 model.save("model_categorize.h5")
 model = load_model("model_categorize.h5")
 model.summary()
+
+predictions = model.predict(x_test)
+predictions[0].shape
+np.sum(predictions[0])
+np.argmax(predictions[0])
+
 
 
 # In[ ]:

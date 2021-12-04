@@ -207,7 +207,7 @@ np.sum(predictions[0])
 
 
 prediction = np.argmax(predictions[0])
-print(prediction)
+print(genres[prediction])
 
 # In[ ]:
 

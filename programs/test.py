@@ -31,82 +31,22 @@ warnings.filterwarnings('ignore')
 cmap = plt.get_cmap('inferno')
 
 plt.figure(figsize=(10,10))
-genres = 'Electric Folk HipHop International Latin Metal Noise Pop Rock Punk'.split()
-for g in genres:
-    pathlib.Path(f'img_data/{g}').mkdir(parents=True, exist_ok=True)     
-    for filename in os.listdir(f'{g}'):
-        songname = f'{g}/{filename}'
+        songname = f'C:\Users\1821144\Documents\GitHub\1821144-yoshii-thesis\programs\Electric\001929.mp3'
         y, sr = librosa.load(songname, mono=True, duration=5)
         plt.specgram(y, NFFT=2048, Fs=2, Fc=0, noverlap=128, cmap=cmap, sides='default', mode='default', scale='dB');
         plt.axis('off');
-        plt.savefig(f'img_data/{g}/{filename[:-3].replace(".", "")}.png')
+        pic = plt.savefig(f'img_data/{g}/{filename[:-3].replace(".", "")}.png')
         plt.clf()
 
 
 # In[8]:
 
 
-header = 'filename chroma_stft spectral_centroid spectral_bandwidth rolloff zero_crossing_rate'
-for i in range(1, 21):
-    header += f' mfcc{i}'
-header += ' label'
-header = header.split()
-
 
 # In[9]:
 
 
-file = open('data.csv', 'w', newline='')
-with file:
-    writer = csv.writer(file)
-    writer.writerow(header)
-genres = 'Electric Folk HipHop International Latin Metal Noise Pop Rock Punk'.split()
-for g in genres:
-    for filename in os.listdir(f'{g}'):
-        songname = f'{g}/{filename}'
-        y, sr = librosa.load(songname, mono=True, duration=30)
-        chroma_stft = librosa.feature.chroma_stft(y=y, sr=sr)
-        spec_cent = librosa.feature.spectral_centroid(y=y, sr=sr)
-        spec_bw = librosa.feature.spectral_bandwidth(y=y, sr=sr)
-        rolloff = librosa.feature.spectral_rolloff(y=y, sr=sr)
-        zcr = librosa.feature.zero_crossing_rate(y)
-        mfcc = librosa.feature.mfcc(y=y, sr=sr)
-        to_append = f'{filename} {np.mean(chroma_stft)} {np.mean(spec_cent)} {np.mean(spec_bw)} {np.mean(rolloff)} {np.mean(zcr)}'    
-        for e in mfcc:
-            to_append += f' {np.mean(e)}'
-        to_append += f' {g}'
-        file = open('data.csv', 'a', newline='')
-        with file:
-            writer = csv.writer(file)
-            writer.writerow(to_append.split())
-            
 
-
-# In[10]:
-
-
-data = pd.read_csv('data.csv')
-data.head()
-
-
-# In[11]:
-
-
-data.shape
-
-
-# In[12]:
-
-
-data = data.drop(['filename'],axis=1)
-
-
-# In[13]:
-
-
-genre_list = data.iloc[:, -1]
-encoder = LabelEncoder()
-y = encoder.fit_transform(genre_list)
 
 
 # In[14]:

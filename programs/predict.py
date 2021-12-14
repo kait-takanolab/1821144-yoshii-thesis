@@ -13,7 +13,7 @@ import os
 from PIL import Image
 import pathlib
 import csv
-from keras.models import Sequential,load_model
+import time
 
 # Preprocessing
 from sklearn.model_selection import train_test_split
@@ -21,13 +21,14 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 
 #Keras
 import keras
+from keras.models import Sequential,load_model
 
 import warnings
 warnings.filterwarnings('ignore')
 
 
 # In[5]:
-
+t1 = time.time() 
 
 cmap = plt.get_cmap('inferno')
 
@@ -209,6 +210,9 @@ np.sum(predictions[0])
 
 prediction = np.argmax(predictions[0])
 print(genres[prediction])
+t2 = time.time()
+elapsed_time = t2-t1
+print(f"経過時間：{elapsed_time}")
 
 # In[ ]:
 

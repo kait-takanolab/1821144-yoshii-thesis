@@ -13,6 +13,7 @@ import os
 from PIL import Image
 import pathlib
 import csv
+from keras.models import Sequential,load_model
 
 # Preprocessing
 from sklearn.model_selection import train_test_split
@@ -186,7 +187,8 @@ print('test_acc: ',test_acc)
 
 
 # In[24]:
-
+model.save('./my_model.h5')
+model = load_model('./my_model.h5')
 
 predictions = model.predict(X_test)
 
@@ -199,13 +201,12 @@ predictions[0].shape
 
 # In[26]:
 
-a
+
 np.sum(predictions[0])
 
 
 # In[27]:
 
-model.save("my_model")
 prediction = np.argmax(predictions[0])
 print(genres[prediction])
 

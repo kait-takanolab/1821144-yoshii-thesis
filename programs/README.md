@@ -1,7 +1,7 @@
 heatmap.py 楽曲をヒートマップとして可視化
 heatmap.pyを使用する際にffmpeg,pydub,pandas,seaborn,matplotlibのインストールが必要
 ffmpegインストール方法
-https://jp.videoproc.com/edit-convert/how-to-download-and-install-ffmpeg.html
+https://jp.videoproc.com/edit-convert/how-to-download-and-install-ffmpeg.htm
   必要パッケージのインストールは  
 pip3 install pydub  
 pip3 install pandas  

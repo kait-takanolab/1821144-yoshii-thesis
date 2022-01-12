@@ -155,7 +155,7 @@ model.compile(optimizer='adam',
 
 
 # In[21]:
-
+model.summary()
 
 history = model.fit(X_train,
                     y_train,

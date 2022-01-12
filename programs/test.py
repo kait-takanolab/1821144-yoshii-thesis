@@ -22,16 +22,8 @@ from sklearn.preprocessing import LabelEncoder, StandardScaler
 #Keras
 import keras
 from keras.models import Sequential,load_model
-
-model = model.Sequential()
-model.add(layers.Dense(256, activation='relu', input_shape=(X_train.shape[1],)))
-
-model.add(layers.Dense(128, activation='relu'))
-
-model.add(layers.Dense(64, activation='relu'))
-
-model.add(layers.Dense(10, activation='softmax'))
-
+from keras.models import load_model
+model = load_model('my_model.h5')
 print(model.summary())
 plot_model(model, to_file='model.png')
 
